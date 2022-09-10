@@ -19,18 +19,10 @@ const Header = () => {
 
           {/* nav */}
           <nav className={styles.navegacion}>
-            <Link href="/">
-              <a>Inicio</a>
-            </Link>
-            <Link href="/nosotros">
-              <a>Nosotros</a>
-            </Link>
-            <Link href="/">
-              <a>Blog</a>
-            </Link>
-            <Link href="/">
-              <a>Tienda</a>
-            </Link>
+            <Link href="/">Inicio</Link>
+            <Link href="/nosotros">Nosotros</Link>
+            <Link href="/blog">Blog</Link>
+            <Link href="/tienda">Tienda</Link>
           </nav>
         </div>
       </div>
