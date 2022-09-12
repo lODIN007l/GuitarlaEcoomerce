@@ -18,7 +18,7 @@ const Blog = ({ entradas }) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   //consulta Api
   const url = "http://localhost:1337/blogs";
   const respuesta = await fetch(url);
