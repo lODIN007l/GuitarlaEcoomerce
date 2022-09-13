@@ -1,17 +1,36 @@
-import { useRouter } from "next/router";
-
+import Image from "next/image";
+import { formatearFecha } from "../../helpers/formatearFecha";
+import Layout from "../../components/Layouts";
 const EntradBlog = ({ entrada }) => {
-  console.log(entrada);
+  const { contenido, imagen, resumen, titulo, published_at } = entrada;
+
+  // console.log(entrada);
   return (
-    <div>
-      <h1>Desde entrada blog</h1>{" "}
-    </div>
+    <Layout>
+      <main className="contenedor">
+        <h1 className="heading">{titulo}</h1>
+        <article>
+          <Image
+            src={imagen.url}
+            alt={`Imagen de entrada ${titulo}`}
+            width={800}
+            height={600}
+            layout="responsive"
+          />
+          <div>
+            <p>{formatearFecha(published_at)}</p>
+            <p>{contenido}</p>
+          </div>
+        </article>
+      </main>
+    </Layout>
   );
 };
 export default EntradBlog;
 
 // export async function getServerSideProps({ query: { id } }) {
 //   const url = `http://localhost:1337/blogs/${id}`;
+//    const url = `${process.env.API_URL}/blogs/${id}`;
 //   //   console.log(url);
 //   const respuesta = await fetch(url);
 //   const entrada = await respuesta.json();
@@ -25,7 +44,8 @@ export default EntradBlog;
 
 // con staticprops
 export async function getStaticPaths() {
-  const url = "http://localhost:1337/blogs";
+  const url = `${process.env.API_URL}/blogs`;
+  // console.log(url);
   const respuesta = await fetch(url);
   const entradas = await respuesta.json();
   const paths = entradas.map((entrada) => ({
@@ -39,8 +59,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { id } }) {
-  const url = `http://localhost:1337/blogs/${id}`;
-  //   console.log(url);
+  // const url = `http://localhost:1337/blogs/${id}`;
+  const url = `${process.env.API_URL}/blogs/${id}`;
+  // console.log(url);
   const respuesta = await fetch(url);
   const entrada = await respuesta.json();
   //   console.log(entrada);

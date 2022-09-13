@@ -4,6 +4,8 @@ import Entrada from "../components/Entrada";
 import styles from "../styles/Blog.module.css";
 
 const Blog = ({ entradas }) => {
+  // const url = `${process.env.NEXT_PUBLIC_API_URL}/blogs`;
+  // console.log(url);
   return (
     <Layouts pagina="blog">
       <main className="contenedor">
@@ -20,7 +22,7 @@ const Blog = ({ entradas }) => {
 
 export async function getStaticProps() {
   //consulta Api
-  const url = "http://localhost:1337/blogs";
+  const url = `${process.env.API_URL}/blogs`;
   const respuesta = await fetch(url);
   const entradas = await respuesta.json();
   // console.log(entradas);
