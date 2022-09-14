@@ -7,7 +7,7 @@ const Tienda = ({ guitarras }) => {
   // console.log(guitarras);
   return (
     <Layouts pagina="tienda">
-      <main>
+      <main className="contenedor">
         <h1 className="heading">Nuestra Coleccion </h1>
         <Listado guitarras={guitarras} />
       </main>
@@ -18,7 +18,7 @@ const Tienda = ({ guitarras }) => {
 export default Tienda;
 
 export async function getServerSideProps() {
-  const url = `${process.env.API_URL}/guitarras`;
+  const url = `${process.env.API_URL}/guitarras?_sort=precio:desc`;
   // console.log(url);
   const respuesta = await fetch(url);
   const guitarras = await respuesta.json();
