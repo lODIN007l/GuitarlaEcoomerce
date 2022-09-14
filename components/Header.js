@@ -42,12 +42,15 @@ const Header = ({ guitarra }) => {
         )}
       </div>
       {router.pathname === "/" && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          className={styles.guitarra}
-          src="/img/header_guitarra.png"
-          alt="Imagen guitarras"
-        />
+        <div className={styles.guitarra}>
+          <Image
+            height={1200}
+            width={500}
+            layout="fixed"
+            src="/img/header_guitarra.png"
+            alt="Imagen guitarras"
+          />
+        </div>
       )}
     </header>
   );
