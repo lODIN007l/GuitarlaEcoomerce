@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Layouts from "../components/Layouts";
 import Listado from "../components/Listado";
+import Curso from "../components/Curso";
 // import styles from '../styles/Home.module.css'
 
-export default function Home({ guitarras }) {
+export default function Home({ guitarras, curso }) {
   return (
     <div>
       <Layouts pagina="inicio">
@@ -11,6 +12,7 @@ export default function Home({ guitarras }) {
           <h1 className="heading">Nuestra Coleccion</h1>
           <Listado guitarras={guitarras} />
         </main>
+        <Curso curso={curso} />
       </Layouts>
     </div>
   );
