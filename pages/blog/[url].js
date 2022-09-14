@@ -8,7 +8,7 @@ const EntradBlog = ({ entrada }) => {
 
   // console.log(entrada);
   return (
-    <Layout>
+    <Layout pagina={titulo}>
       <main className="contenedor">
         <h1 className="heading">{titulo}</h1>
         <article className={styles.entrada}>
@@ -63,10 +63,10 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { url } }) {
   const urlBlog = `${process.env.API_URL}/blogs?url=${url}`;
 
-  console.log(urlBlog);
+  // console.log(urlBlog);
   const respuesta = await fetch(urlBlog);
   const entrada = await respuesta.json();
-  console.log(entrada);
+  // console.log(entrada);
   return {
     props: {
       entrada: entrada[0],

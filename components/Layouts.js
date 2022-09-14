@@ -6,7 +6,7 @@ const Layouts = ({ children, pagina }) => {
   return (
     <div>
       <Head>
-        <title>GuitarLa-{pagina}</title>
+        <title>{`GuitarLA - ${pagina}`}</title>
         <meta name="descripcion" content="Sitio web de guitarras" />
       </Head>
       <Header />
