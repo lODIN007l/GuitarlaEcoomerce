@@ -44,10 +44,33 @@ function MyApp({ Component, pageProps }) {
       setCarrito([...carrito, producto]);
     }
   };
+
+  const actualizarCantidad = (producto) => {
+    const carritoActualizado = carrito.map((articulo) => {
+      // aqui actualizamos en base al producto encontrado
+      if (articulo.id === producto.id) {
+        articulo.cantidad = producto.cantidad;
+        // en caso de querer acumular los articulos
+        // articulo.cantidad = producto.cantidad + articulo.cantidad;
+        // console.log(articulo);
+      }
+      return articulo;
+    });
+    setCarrito(carritoActualizado);
+  };
+
+  const eliminarProducto = (id) => {
+    // console.log(id);
+    const carritoActualizado = carrito.filter((articulo) => articulo.id !== id);
+    setCarrito(carritoActualizado);
+  };
+
   return (
     <Component
       carrito={carrito}
       agregarCarrito={agregarCarrito}
+      actualizarCantidad={actualizarCantidad}
+      eliminarProducto={eliminarProducto}
       {...pageProps}
     />
   );
