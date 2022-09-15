@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps }) {
         }
         return articulo;
       });
-      console.log(carritoActualizado);
+      // console.log(carritoActualizado);
       // actualizamos en el set
       setCarrito(carritoActualizado);
     } else {
