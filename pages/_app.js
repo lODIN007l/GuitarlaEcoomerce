@@ -1,8 +1,27 @@
 import "../styles/normalize.css";
 import "../styles/globals.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 function MyApp({ Component, pageProps }) {
-  const [carrito, setCarrito] = useState([]);
+  // const initialState = () => JSON.parse(localStorage.getItem("carrito")) || [];
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const initialState = [];
+  const [carrito, setCarrito] = useState(initialState);
+
+  // VERIFICAR SI YA EXISTE
+  useEffect(() => {
+    const carritoLS = JSON.parse(localStorage.getItem("carrito"));
+    if (carritoLS) {
+      setCarrito(carritoLS);
+    }
+  }, []);
+
+  //PERMANECER EN MEMORIA
+  useEffect(() => {
+    if (carrito !== initialState) {
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+    }
+  }, [carrito, initialState]);
+
   const agregarCarrito = (producto) => {
     // en caso que ya este
     // este solo devuelve verdadero o falso
@@ -21,6 +40,7 @@ function MyApp({ Component, pageProps }) {
       // actualizamos en el set
       setCarrito(carritoActualizado);
     } else {
+      // si no existe y es nuevo aqui -->
       setCarrito([...carrito, producto]);
     }
   };
